@@ -1,0 +1,5 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Set the background color for the unselected state -->
+    <solid android:color="@color/white" />
+    <!-- Add any other desired styling attributes -->
+</shape>

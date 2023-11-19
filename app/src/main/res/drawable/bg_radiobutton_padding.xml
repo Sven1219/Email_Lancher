@@ -1,0 +1,32 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <!-- Set your desired background color -->
+            <solid android:color="@color/grey" />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape android:shape="rectangle">
+                <!-- Set your desired secondary progress color (if needed) -->
+                <solid android:color="@color/grey" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <!-- Set your desired progress color (if needed) -->
+                <solid android:color="@color/grey" />
+            </shape>
+        </clip>
+    </item>
+    <item>
+        <!-- Set the desired padding for the radio button -->
+        <padding
+            android:left="8dp"
+            android:top="8dp"
+            android:right="8dp"
+            android:bottom="8dp" />
+    </item>
+</layer-list>

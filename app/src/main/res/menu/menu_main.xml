@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/miCompose"
+        android:icon="@drawable/attachmenticon"
+        app:showAsAction="ifRoom"
+        android:title="Compose">
+    </item>
+    <item
+        android:id="@+id/sendmail"
+        android:icon="@drawable/sendfileicon"
+        app:showAsAction="ifRoom|withText"
+        android:title="Profile">
+    </item>
+    <item
+        android:id="@+id/addcontact"
+        app:showAsAction="ifRoom|withText"
+        android:title="Add from Contats">
+    </item>
+    <item
+        android:id="@+id/saveDraft"
+        app:showAsAction="ifRoom|withText"
+        android:title="Save as draft">
+    </item>
+    <item
+        android:id="@+id/discard"
+        app:showAsAction="ifRoom|withText"
+        android:title="Discard">
+    </item>
+    <item
+        android:id="@+id/read_receipt"
+        app:showAsAction="ifRoom|withText"
+        android:title="Read Receipt">
+    </item>
+</menu>

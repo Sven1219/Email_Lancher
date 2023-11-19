@@ -1,0 +1,21 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Add other style attributes if needed -->
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+    <style name="BottomDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:windowBackground">@drawable/bg_topcorner_rounded</item>
+    </style>
+    <style name="AppBarTitleStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">20sp</item> <!-- Set the desired text size -->
+    </style>
+</resources>
+

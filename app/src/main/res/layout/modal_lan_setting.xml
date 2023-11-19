@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:backgroundTint="@color/white"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_topcorner_rounded">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+        <TextView
+            android:id="@+id/boldTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/language"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_19"
+            android:layout_marginTop="20dp"
+            />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/launcerchoice"
+            android:paddingTop="10dp">
+
+            <RadioButton
+                android:id="@+id/defaultsys"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/language_content"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/indonesia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/bahasa_indonesia"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/catal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/catala"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/cestina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/cestina"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/symra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/cymraeg"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/dansk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/dansk"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/deutch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/deutsch"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/esti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/esti"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/english"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/english"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/british"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/english_british"
+                android:textSize="@dimen/text_size_15" />
+            <RadioButton
+                android:id="@+id/espa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="10dp"
+                android:text="@string/espa"
+                android:textSize="@dimen/text_size_15" />
+
+
+
+
+        </RadioGroup>
+    </LinearLayout>
+</RelativeLayout>

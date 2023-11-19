@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/avatarView"
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fromimage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/avatar"
+            app:civ_border_width="0dp"
+            android:layout_marginRight="20dp"
+            app:civ_border_color="#FF0000"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toRightOf="@id/fromimage"
+            android:text="AAA"
+            android:textColor="@color/mail_card_from"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11:46"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/from"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/mail_card_content"
+            android:layout_toRightOf="@id/fromimage"
+            android:text="AAA"
+            android:textSize="13sp"
+            />
+
+        <TextView
+            android:id="@+id/mailcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AAA"
+            android:layout_marginLeft="5dp"
+            android:textSize="13sp"
+
+            android:textColor="@color/mail_card_content"
+            android:layout_below="@+id/subject"
+            android:layout_toRightOf="@id/fromimage"/>
+        <ImageView
+            android:id="@+id/staricon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/staricon"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="55dp" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/staricon"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider" />
+    </RelativeLayout>
+
+</LinearLayout>

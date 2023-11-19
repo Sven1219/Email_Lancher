@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:weightSum="5"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/lanicon"
+        android:padding="10dp"
+        android:src="@drawable/lan_en"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:id="@+id/languageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="normal"
+        android:textFontWeight="600"
+        android:layout_marginStart="10dp"
+        android:textSize="@dimen/text_size_large"
+        android:text="English"/>
+
+    <RadioButton
+        android:id="@+id/emailRadiobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:checked="true"
+        android:background="@drawable/bg_grey_select"
+        android:buttonTint="@drawable/radio_button_selector"
+        />
+
+</LinearLayout>

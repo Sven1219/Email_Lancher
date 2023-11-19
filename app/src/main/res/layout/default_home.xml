@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+        <TextView
+            android:id="@+id/boldTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/defaulthome_bold"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_big"
+            android:gravity="center"
+            android:layout_below="@id/emailRadiobutton"
+            android:layout_marginTop="50dp"
+            />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/launcerchoice"
+            android:paddingTop="10dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <RadioButton
+                android:id="@+id/emailRadiobutton"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/bg_grey_select"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="20dp"
+                android:text="@string/defaulthome_email"
+                android:textSize="@dimen/text_size_small" />
+
+            <RadioButton
+                android:id="@+id/systemRadiobutton"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_grey_select"
+                android:buttonTint="@drawable/radio_button_selector"
+                android:padding="20dp"
+                android:text="@string/defaulthome_system"
+                android:textSize="@dimen/text_size_small" />
+
+        </RadioGroup>
+    </LinearLayout>
+</RelativeLayout>

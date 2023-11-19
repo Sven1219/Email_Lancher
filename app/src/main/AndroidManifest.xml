@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.SMS_RECEIVED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:targetApi="31">
+        <activity
+            android:name="com.sven.email.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.sven.email.setting.DefaultHomeActivity" />
+        <activity android:name="com.sven.email.login.LoginActivity" />
+        <activity android:name="com.sven.email.MainScreenActivity" />
+        <activity android:name="com.sven.email.LanguageActivity" />
+        <activity android:name="com.sven.email.mailbox.InboxActivity" />
+        <activity android:name="com.sven.email.mailbox.SentActivity" />
+        <activity android:name="com.sven.email.mailbox.OutboxActivity" />
+        <activity android:name="com.sven.email.mailbox.ArchiveActivity" />
+        <activity android:name="com.sven.email.mailbox.DraftsActivity" />
+        <activity android:name="com.sven.email.mailbox.JunkActivity" />
+        <activity android:name="com.sven.email.mailbox.DeleteActivity" />
+        <activity android:name="com.sven.email.mailbox.PrimaryActivity" />
+        <activity android:name="com.sven.email.mailbox.StarActivity" />
+        <activity android:name="com.sven.email.setting.SettingsActivity" />
+        <activity android:name="com.sven.email.mailbox.ComposeActivity" />
+        <activity android:name="com.sven.email.setting.GeneralSettingsActivity" />
+        <activity android:name="com.sven.email.setting.DisplaySettingsActivity" />
+        <activity android:name="com.sven.email.setting.InteractionSettingsActivity" />
+        <activity android:name="com.sven.email.setting.NotificationSettingsActivity" />
+        <activity android:name="com.sven.email.setting.AccountActivity" />
+        <activity android:name="com.sven.email.setting.FetchingmailActivity" />
+        <activity android:name="com.sven.email.setting.SendingmailActivity" />
+        <activity android:name="com.sven.email.setting.AccountNotificationActivity" />
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+    </application>
+
+</manifest>

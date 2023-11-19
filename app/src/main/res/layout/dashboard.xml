@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:backgroundTint="#D0CACA">
+            <include
+                android:id="@+id/navsearch"
+                layout="@layout/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp"
+                android:padding="10dp"
+                />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/emailRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:visibility="gone"
+                    />
+            </ScrollView>
+
+            <ProgressBar
+                android:id="@+id/loadingScreen"
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/emptymail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/emptymail"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/composebutton"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:text="@string/compose"
+            android:background="@drawable/bg_grey_select"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:drawableLeft="@drawable/compose_white"
+            android:padding="15dp"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:drawablePadding="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="60dp"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/navbar"
+        layout="@layout/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,5 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true"
+        android:color="@color/colorPrimary" /> <!-- Color when radio button is selected -->
+    <item android:color="@color/radio_button_stoke" /> <!-- Color when radio button is unselected -->
+</selector>

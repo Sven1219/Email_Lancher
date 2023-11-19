@@ -1,0 +1,13 @@
+<!-- rounded_shape.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shape for the right side -->
+    <item android:left="0dp">
+        <shape android:shape="rectangle">
+            <corners android:topRightRadius="30dp"
+                android:bottomRightRadius="30dp" />
+            <solid android:color="@color/pink" />
+        </shape>
+    </item>
+
+</layer-list>
