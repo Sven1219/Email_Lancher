@@ -9,12 +9,15 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.sven.email.login.LoginActivity;
 import com.sven.email.mailbox.ArchiveActivity;
@@ -40,6 +44,7 @@ import com.sven.email.mailbox.OutboxActivity;
 import com.sven.email.mailbox.PrimaryActivity;
 import com.sven.email.mailbox.SentActivity;
 import com.sven.email.mailbox.StarActivity;
+import com.sven.email.database.DatabaseHelper;
 import com.sven.email.setting.SettingsActivity;
 
 import java.util.ArrayList;
@@ -47,7 +52,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements EmailAdapter.OnItemClickListener  {
     protected DrawerLayout drawerLayout;
     protected TextView categoryText;
     protected RecyclerView emailRecyclerView;
@@ -57,6 +62,23 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Button composebutton;
     protected EditText inputEditText;
     protected CircleImageView circularImageView;
+
+    protected static final int REQUEST_AUTHORIZATION = 1001;
+    protected Gmail mGmailService;
+    protected List<Email> emailList;
+    protected TextView messageNumText;
+
+    protected ProgressBar loadingScreen;
+    protected String from = "";
+    protected String to = "";
+    protected String subject = "";
+    protected String image = "";
+    protected long time;
+    protected int index = 0;
+    protected Thread mainThread;
+    protected boolean endFlag = false;
+    protected View v;
+    private Context context = null;
     protected static final String[] SCOPES = {
             GmailScopes.GMAIL_LABELS,
             GmailScopes.GMAIL_COMPOSE,
@@ -65,41 +87,38 @@ public abstract class BaseActivity extends AppCompatActivity {
             GmailScopes.GMAIL_READONLY,
             GmailScopes.MAIL_GOOGLE_COM
     };
+    private int preSize = 0;
 
 
-    protected void setupEmailList(List<Email> emailList) {
+    protected void setupEmailList(List<Email> emailList, int num, Context context) {
+        this.context = context;
 
         if(emailList.size() == 0) {
             emptyMailImageView.setVisibility(View.VISIBLE);
             emailRecyclerView.setVisibility(View.GONE);
             composebutton.setVisibility(View.VISIBLE);
+            messageNumText.setText(Integer.toString(0));
         } else {
             emptyMailImageView.setVisibility(View.GONE);
             emailRecyclerView.setVisibility(View.VISIBLE);
             composebutton.setVisibility(View.VISIBLE);
             // Set up the RecyclerView
-            emailAdapter = new EmailAdapter(emailList);
+            emailAdapter = new EmailAdapter(emailList, this, context);
             emailLinearLayout = new LinearLayoutManager(this);
             emailRecyclerView.setLayoutManager(emailLinearLayout);
             emailRecyclerView.setAdapter(emailAdapter);
+            emailAdapter.notifyDataSetChanged();
+            int scrollPos = (index - 1) * 10;
+            if(index > 1)    emailRecyclerView.getLayoutManager().scrollToPosition(emailList.size() - 10);
+            Log.d("CurrentIndex", Integer.toString(scrollPos));
+            messageNumText.setText(Integer.toString(num));
         }
     }
 
-    protected  void resetupEmailList(List<Email> emailList, int mode) {
-        if(emailList.size() == 0) {
-            emptyMailImageView.setVisibility(View.VISIBLE);
-            emailRecyclerView.setVisibility(View.GONE);
-            composebutton.setVisibility(View.VISIBLE);
-        } else {
-            emptyMailImageView.setVisibility(View.GONE);
-            emailRecyclerView.setVisibility(View.VISIBLE);
-            composebutton.setVisibility(View.VISIBLE);
-            // Set up the RecyclerView
-                emailAdapter = new EmailAdapter(emailList);
-                emailLinearLayout = new LinearLayoutManager(this);
-                emailRecyclerView.setLayoutManager(emailLinearLayout);
-                emailRecyclerView.setAdapter(emailAdapter);
-        }
+    @Override
+    public void onItemClick(String value) {
+        // Handle the clicked value here
+        Toast.makeText(this, "Clicked value: " + value, Toast.LENGTH_SHORT).show();
     }
 
     protected void setComposebuttonClickListener () {
@@ -149,30 +168,39 @@ public abstract class BaseActivity extends AppCompatActivity {
         switch (menuItemId) {
             case R.id.toInbox:
                 toInbox.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.inboxNum);
                 break;
             case R.id.toSent:
                 toSent.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.sentNum);
                 break;
             case R.id.toOutbox:
                 toOutbox.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.outboxNum);
                 break;
             case R.id.toArchive:
                 toArchive.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.archiveNum);
                 break;
             case R.id.toDrafts:
                 toDrafts.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.draftNum);
                 break;
             case R.id.toJunk:
                 toJunk.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.junkNum);
                 break;
             case R.id.toDelete:
                 toDelete.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.deleteNum);
                 break;
             case R.id.toPrimary:
                 toPrimary.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.primaryNum);
                 break;
             case R.id.toStar:
                 toStar.setBackgroundResource(R.drawable.bg_menu_pink);
+                messageNumText = findViewById(R.id.starNum);
                 break;
             case R.id.toSettings:
                 toSettings.setBackgroundResource(R.drawable.bg_menu_pink);
@@ -183,6 +211,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void setNavigationClickListener() {
         GoogleSignInAccount account = LoginActivity.getAccount();
         TextView navmail = findViewById(R.id.navmail);
+        messageNumText = findViewById(R.id.inboxNum);
         navmail.setText(account.getEmail());
 
         RelativeLayout toInbox = findViewById(R.id.toInbox);
@@ -294,7 +323,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 Log.d("Tag", "1" + emailAdapter.getEmailList());
             }
         }
-        setupEmailList(filteredList);
+        setupEmailList(filteredList,0, context);
     }
 
     protected void setAvataronClickListner () {

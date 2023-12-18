@@ -1,24 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/miCompose"
+        android:id="@+id/attachFile"
         android:icon="@drawable/attachmenticon"
         app:showAsAction="ifRoom"
-        android:title="Compose">
+        android:title="AttachFile">
     </item>
     <item
         android:id="@+id/sendmail"
         android:icon="@drawable/sendfileicon"
         app:showAsAction="ifRoom|withText"
-        android:title="Profile">
+        android:title="Compose">
     </item>
     <item
         android:id="@+id/addcontact"
         app:showAsAction="ifRoom|withText"
-        android:title="Add from Contats">
+        android:title="Add from Contacts">
     </item>
     <item
-        android:id="@+id/saveDraft"
+        android:id="@+id/savedraft"
         app:showAsAction="ifRoom|withText"
         android:title="Save as draft">
     </item>

@@ -38,61 +38,14 @@
         </RelativeLayout>
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/loginAccountRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_grey_select"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            android:id="@+id/account"
-            >
-            <ImageView
-                android:padding="10dp"
-                android:src="@drawable/google_icon"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="swainfo.nirali@gmail.com"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_small"
-                android:gravity="center"
-                android:layout_below="@id/emailRadiobutton"
-                android:layout_marginStart="10dp"
-                android:layout_gravity="center"
-                />
-        </LinearLayout>
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_grey_select"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            android:id="@+id/otheraccount"
-            >
-            <ImageView
-                android:padding="10dp"
-                android:src="@drawable/google_icon"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/login_account"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_small"
-                android:gravity="center"
-                android:layout_below="@id/emailRadiobutton"
-                android:layout_marginStart="10dp"
-                android:layout_gravity="center"
-                />
-        </LinearLayout>
+            android:scrollbars="vertical"
+            android:visibility="gone"
+            />
     </LinearLayout>
 </RelativeLayout>

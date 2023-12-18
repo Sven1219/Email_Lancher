@@ -29,7 +29,7 @@
             android:layout_toRightOf="@id/fromimage"
             android:text="AAA"
             android:textColor="@color/mail_card_from"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/time"

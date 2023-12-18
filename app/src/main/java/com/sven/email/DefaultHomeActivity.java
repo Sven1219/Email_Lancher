@@ -1,16 +1,19 @@
-package com.sven.email.setting;
+package com.sven.email;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.provider.OpenableColumns;
 import android.widget.RadioGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import com.sven.email.MainScreenActivity;
-import com.sven.email.R;
+import com.sven.email.customLauncher.HomeScreenFragment;
 import com.sven.email.login.LoginActivity;
 
-public class DefaultHomeActivity extends AppCompatActivity {
+import java.util.Locale;
+
+public class DefaultHomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,8 @@ public class DefaultHomeActivity extends AppCompatActivity {
                         break;
                     case R.id.systemRadiobutton:
                         // Navigate to Screen 2
-                        Intent intent2 = new Intent(DefaultHomeActivity.this, MainScreenActivity.class);
+                        Intent intent2 = new Intent(DefaultHomeActivity.this, CustomActivity.class);
+                        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent2);
                         break;
                 }

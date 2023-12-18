@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    tools:context="com.sven.email.CustomActivity">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appSearch"
+        android:background="@drawable/bg_rounded_searchapp"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        xmlns:tools="http://schemas.android.com/tools"
+        >
+        <ImageView
+            android:id="@+id/googleicon"
+            android:padding="5dp"
+            android:src="@drawable/google_icon"
+            android:layout_height="34dp"
+            android:layout_width="34dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"/>
+        <ImageView
+            android:id="@+id/audioicon"
+            android:padding="5dp"
+            android:src="@drawable/audio_icon"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/captureicon"/>
+        <ImageView
+            android:id="@+id/captureicon"
+            android:padding="5dp"
+            android:src="@drawable/camera_icon"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:weightSum="4">
+
+            <ImageView
+                android:id="@+id/home_icon1"
+                android:src="@drawable/selficon"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:padding="10dp"/>
+
+            <ImageView
+                android:id="@+id/phoneicon"
+                android:src="@drawable/call"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:padding="10dp"/>
+
+            <ImageView
+                android:id="@+id/messageicon"
+                android:src="@drawable/message"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:padding="10dp"/>
+
+            <ImageView
+                android:id="@+id/cameraicon"
+                android:src="@drawable/camera"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

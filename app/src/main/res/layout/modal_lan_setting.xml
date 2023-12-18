@@ -35,85 +35,59 @@
                 android:padding="10dp"
                 android:text="@string/language_content"
                 android:textSize="@dimen/text_size_15" />
+
             <RadioButton
-                android:id="@+id/indonesia"
+                android:id="@+id/spain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@drawable/radio_button_selector"
                 android:padding="10dp"
-                android:text="@string/bahasa_indonesia"
+                android:text="@string/espa"
                 android:textSize="@dimen/text_size_15" />
+
             <RadioButton
-                android:id="@+id/catal"
+                android:id="@+id/franch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@drawable/radio_button_selector"
                 android:padding="10dp"
-                android:text="@string/catala"
+                android:text="Francias"
                 android:textSize="@dimen/text_size_15" />
+
             <RadioButton
-                android:id="@+id/cestina"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@drawable/radio_button_selector"
-                android:padding="10dp"
-                android:text="@string/cestina"
-                android:textSize="@dimen/text_size_15" />
-            <RadioButton
-                android:id="@+id/symra"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@drawable/radio_button_selector"
-                android:padding="10dp"
-                android:text="@string/cymraeg"
-                android:textSize="@dimen/text_size_15" />
-            <RadioButton
-                android:id="@+id/dansk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@drawable/radio_button_selector"
-                android:padding="10dp"
-                android:text="@string/dansk"
-                android:textSize="@dimen/text_size_15" />
-            <RadioButton
-                android:id="@+id/deutch"
+                android:id="@+id/german"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@drawable/radio_button_selector"
                 android:padding="10dp"
                 android:text="@string/deutsch"
                 android:textSize="@dimen/text_size_15" />
+
             <RadioButton
-                android:id="@+id/esti"
+                android:id="@+id/italian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@drawable/radio_button_selector"
                 android:padding="10dp"
-                android:text="@string/esti"
+                android:text="Italiano"
                 android:textSize="@dimen/text_size_15" />
+
             <RadioButton
-                android:id="@+id/english"
+                android:id="@+id/portugues"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@drawable/radio_button_selector"
                 android:padding="10dp"
-                android:text="@string/english"
+                android:text="Portugues"
                 android:textSize="@dimen/text_size_15" />
+
             <RadioButton
-                android:id="@+id/british"
+                android:id="@+id/ko"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@drawable/radio_button_selector"
                 android:padding="10dp"
-                android:text="@string/english_british"
-                android:textSize="@dimen/text_size_15" />
-            <RadioButton
-                android:id="@+id/espa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@drawable/radio_button_selector"
-                android:padding="10dp"
-                android:text="@string/espa"
+                android:text="한국어"
                 android:textSize="@dimen/text_size_15" />
 
 

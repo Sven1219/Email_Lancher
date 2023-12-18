@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.sven.email.BaseActivity;
 import com.sven.email.R;
+import com.sven.email.login.LoginActivity;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,5 +46,8 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        GoogleSignInAccount account = LoginActivity.getAccount();
+        TextView setting_email = findViewById(R.id.setting_email);
+        setting_email.setText(account.getEmail());
     }
 }

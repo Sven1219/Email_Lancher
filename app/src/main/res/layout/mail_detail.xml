@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/detailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/gap_10sp"
+                android:paddingTop="@dimen/gap_30sp"
+                android:paddingBottom="@dimen/gap_20sp">
+                <TextView
+                    android:id="@+id/detailSubject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Security alert"
+                    android:textColor="@color/mail_card_from"
+                    android:textSize="@dimen/gap_20sp"
+                    android:layout_marginEnd="50sp"
+                    android:textStyle="bold" />
+                <View
+                    android:id="@+id/detailStar"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/staricon"
+                    android:textColor="@color/black"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/avatarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/gap_10sp"
+                android:paddingEnd="@dimen/gap_10sp"
+                android:layout_below="@id/detailTitle">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/detailImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/avatar"
+                    app:civ_border_width="0dp"
+                    android:layout_marginRight="20dp"
+                    app:civ_border_color="#FF0000"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/detailFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_toRightOf="@id/detailImage"
+                    android:text="Google"
+                    android:textColor="@color/mail_card_from"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:background="@drawable/detail_reply"
+                    android:textColor="@color/black"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/detailTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/detailFrom"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/mail_card_content"
+                    android:layout_toRightOf="@id/detailImage"
+                    android:text="AAA"
+                    android:textSize="13sp"
+                    />
+                <TextView
+                    android:id="@+id/detailTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/detailTo"
+                    android:textColor="@color/mail_card_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="AAA"
+                    android:textSize="13sp"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_layout"
+                android:layout_marginHorizontal="@dimen/gap_20sp"
+                android:layout_marginVertical="@dimen/gap_20sp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/detailContentFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/gap_15sp"
+                    android:padding="@dimen/gap_15sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="AAA"
+                    android:textColor="@color/mail_card_content"
+                    android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/detailContentSubject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20sp"
+                    android:paddingVertical="5sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="AAA"
+                    android:textColor="@color/mail_card_content"
+                    android:textSize="25sp"
+                    android:textFontWeight="@integer/material_motion_duration_long_2"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="20sp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/detailContentImage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/avatar"
+                        app:civ_border_width="0dp"
+                        app:civ_border_color="#FF0000"/>
+                    <TextView
+                        android:id="@+id/detailContentTo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/gap_5sp"
+                        android:text="AAA"
+                        android:textColor="@color/mail_card_content"
+                        android:textSize="13sp" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginHorizontal="10sp"/>
+                <WebView
+                    android:id="@+id/detailContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/gap_40sp"
+                    android:layout_marginHorizontal="@dimen/gap_40sp"
+                    android:padding="@dimen/gap_20sp"
+                    android:layout_weight="1"
+                    android:text="AAA"
+                    android:textColor="@color/mail_card_content"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <!-- Rest of your layout -->
+
+</LinearLayout>

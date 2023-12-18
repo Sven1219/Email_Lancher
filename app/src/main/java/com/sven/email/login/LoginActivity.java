@@ -1,5 +1,6 @@
 package com.sven.email.login;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +22,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.sven.email.customLauncher.AppsDrawerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -35,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.login);
         getSupportActionBar().hide();
 
@@ -47,6 +54,12 @@ public class LoginActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+//        List<GoogleSignInAccount> accounts = new ArrayList<>();
+//        Intent inte = mGoogleSignInClient.getSignInIntent();
+
+//        RecyclerView loginAccountRecyclerView = findViewById(R.id.loginAccountRecyclerView);
+//        LoginAccountAdapter adapter = new LoginAccountAdapter(accounts);
+//        loginAccountRecyclerView.setAdapter(adapter);
 
         // Set click listener for the Google Sign-In button
         findViewById(R.id.sign_in_button).setOnClickListener((View.OnClickListener) view -> {
@@ -79,7 +92,6 @@ public class LoginActivity extends AppCompatActivity {
             account = completedTask.getResult(ApiException.class);
             Intent intent1 = new Intent(LoginActivity.this, LanguageActivity.class);
             startActivity(intent1);
-            // Signed in successfully, show authenticated UI.
             firebaseAuthWithGoogle(account.getIdToken());
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason

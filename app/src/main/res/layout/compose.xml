@@ -3,11 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/gap_5sp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -15,25 +17,29 @@
             android:paddingHorizontal="@dimen/gap_5sp"
             android:paddingTop="@dimen/gap_30sp"
             android:paddingBottom="@dimen/gap_20sp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/gap_20sp"
-                android:textSize="@dimen/text_size_15"
-                android:text="@string/From"/>
+                android:text="@string/From"
+                android:textSize="@dimen/text_size_15" />
+
             <EditText
                 android:id="@+id/composer_from"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:inputType="text"
-                android:background="@null"/>
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="text" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_weight="1"
             android:background="?android:attr/listDivider" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,25 +47,29 @@
             android:paddingHorizontal="@dimen/gap_5sp"
             android:paddingTop="@dimen/gap_20sp"
             android:paddingBottom="@dimen/gap_20sp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/gap_20sp"
-                android:textSize="@dimen/text_size_15"
-                android:text="@string/To"/>
+                android:text="@string/To"
+                android:textSize="@dimen/text_size_15" />
+
             <EditText
                 android:id="@+id/composer_to"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:inputType="text"
-                android:background="@null"/>
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="text" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_weight="1"
             android:background="?android:attr/listDivider" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,45 +77,54 @@
             android:paddingHorizontal="@dimen/gap_5sp"
             android:paddingTop="@dimen/gap_20sp"
             android:paddingBottom="@dimen/gap_20sp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/gap_20sp"
-                android:textSize="@dimen/text_size_15"
-                android:text="@string/Subject"/>
+                android:text="@string/Subject"
+                android:textSize="@dimen/text_size_15" />
+
             <EditText
                 android:id="@+id/composer_subject"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:inputType="text"
-                android:background="@null"/>
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="text" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_weight="1"
             android:background="?android:attr/listDivider" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="374dp"
             android:paddingHorizontal="@dimen/gap_5sp"
             android:paddingTop="@dimen/gap_20sp"
             android:paddingBottom="@dimen/gap_20sp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/gap_20sp"
-                android:textSize="@dimen/text_size_15"
-                android:text="@string/Email_text"/>
+                android:text="@string/Email_text"
+                android:textSize="@dimen/text_size_15" />
+
             <EditText
                 android:id="@+id/composer_email_text"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:inputType="text"
-                android:background="@null"/>
+                android:layout_width="wrap_content"
+                android:layout_height="341dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                />
         </LinearLayout>
     </LinearLayout>
 

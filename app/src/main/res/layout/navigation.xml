@@ -60,9 +60,9 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/inboxNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="40"
                     android:layout_alignParentEnd="true"
                     android:textColor="@color/black"
                     android:gravity="center"
@@ -86,6 +86,7 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/sentNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -122,6 +123,7 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/outboxNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -147,6 +149,7 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/archiveNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -172,6 +175,7 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/draftNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -197,6 +201,7 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/junkNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -222,6 +227,7 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/deleteNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -247,6 +253,7 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/primaryNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -272,6 +279,7 @@
                     android:gravity="center"
                     />
                 <TextView
+                    android:id="@+id/starNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

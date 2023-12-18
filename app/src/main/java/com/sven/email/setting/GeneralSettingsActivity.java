@@ -8,9 +8,10 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.sven.email.BaseActivity;
 import com.sven.email.R;
 
-public class GeneralSettingsActivity extends AppCompatActivity {
+public class GeneralSettingsActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

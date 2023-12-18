@@ -5,21 +5,33 @@ import android.graphics.Bitmap;
 import java.util.Calendar;
 
 public class Email {
+    public String id;
     public String from = null;
+    public String to = null;
     public String subject = null;
     public String mailcontent = null;
+    public String body = null;
     public String image = null;
-    public String time = null;
+    public long time;
 
-    public Email (String from, String subject, String mailcontent,String image, String time) {
+    public Email (String id, String from, String to, String subject, String mailcontent,String image, long time, String body) {
+        this.id = id;
         this.from = from;
+        this.to = to;
         this.subject = subject;
         this.mailcontent = mailcontent;
         this.image = image;
         this.time = time;
+        this.body = body;
+    }
+    public String getId() {
+        return this.id;
     }
     public String getFrom() {
         return this.from;
+    }
+    public String getTo() {
+        return this.to;
     }
 
     public String getSubject() {
@@ -33,7 +45,10 @@ public class Email {
         return this.image;
     }
 
-    public String getTime() {
+    public long getTime() {
         return this.time;
+    }
+    public String getBody() {
+        return this.body;
     }
 }

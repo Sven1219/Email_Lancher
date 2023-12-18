@@ -1,0 +1,56 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/detailArchive"
+        android:icon="@drawable/detail_archive"
+        app:showAsAction="ifRoom"
+        android:title="detail_archive">
+    </item>
+    <item
+        android:id="@+id/detail_delete"
+        android:icon="@drawable/detail_delete"
+        app:showAsAction="ifRoom"
+        android:title="detail_delete">
+    </item>
+    <item
+        android:id="@+id/detail_mail"
+        android:icon="@drawable/detail_mail"
+        app:showAsAction="ifRoom"
+        android:title="detail_mail">
+    </item>
+    <item
+        android:id="@+id/send"
+        app:showAsAction="ifRoom|withText"
+        android:title="Send...">
+    </item>
+    <item
+        android:id="@+id/reply"
+        app:showAsAction="ifRoom|withText"
+        android:title="Reply">
+    </item>
+    <item
+        android:id="@+id/replyall"
+        app:showAsAction="ifRoom|withText"
+        android:title="Reply All Star">
+    </item>
+    <item
+        android:id="@+id/forward"
+        app:showAsAction="ifRoom|withText"
+        android:title="Forward">
+    </item>
+    <item
+        android:id="@+id/forwardas"
+        app:showAsAction="ifRoom|withText"
+        android:title="Forward as attachment">
+    </item>
+    <item
+        android:id="@+id/edit"
+        app:showAsAction="ifRoom|withText"
+        android:title="Edit as New Email">
+    </item>
+    <item
+        android:id="@+id/share"
+        app:showAsAction="ifRoom|withText"
+        android:title="Share">
+    </item>
+</menu>

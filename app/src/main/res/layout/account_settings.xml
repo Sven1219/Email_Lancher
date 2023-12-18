@@ -40,6 +40,7 @@
                     android:text="@string/account_settings"
                     android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
                 <TextView
+                    android:id="@+id/account_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_13"

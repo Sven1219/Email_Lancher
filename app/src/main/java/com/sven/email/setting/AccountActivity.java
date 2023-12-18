@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.sven.email.BaseActivity;
 import com.sven.email.R;
+import com.sven.email.login.LoginActivity;
 
 public class AccountActivity extends BaseActivity {
     @Override
@@ -46,5 +49,9 @@ public class AccountActivity extends BaseActivity {
                 startActivity(new Intent(AccountActivity.this, AccountNotificationActivity.class));
             }
         });
+
+        GoogleSignInAccount account = LoginActivity.getAccount();
+        TextView account_email = findViewById(R.id.account_email);
+        account_email.setText(account.getEmail());
     }
 }

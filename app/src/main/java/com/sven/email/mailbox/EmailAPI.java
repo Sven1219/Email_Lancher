@@ -1,10 +1,11 @@
 package com.sven.email.mailbox;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -12,7 +13,6 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.gmail.Gmail;
-import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
 import com.google.api.services.gmail.model.MessagePart;
@@ -20,13 +20,13 @@ import com.google.api.services.gmail.model.MessagePartHeader;
 import com.sven.email.BaseActivity;
 import com.sven.email.login.LoginActivity;
 
-import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -35,31 +35,26 @@ public class EmailAPI extends BaseActivity {
 
     private static final int REQUEST_AUTHORIZATION = 1001;
     private Gmail mGmailService;
-    private static final String[] SCOPES = {
-            GmailScopes.GMAIL_LABELS,
-            GmailScopes.GMAIL_COMPOSE,
-            GmailScopes.GMAIL_INSERT,
-            GmailScopes.GMAIL_MODIFY,
-            GmailScopes.GMAIL_READONLY,
-            GmailScopes.MAIL_GOOGLE_COM
-    };
 
-    private final Activity activity;
-    public List<MailboxData> mailboxDataList;
     public static List<Email>  emailList;
+    protected String mainQuery;
+    protected String displayFrom;
+    protected static int messageNum = 0;
+    private Context context = null;
 
-    EmailAPI(Activity activity) {
-        GoogleSignInAccount account = LoginActivity.getAccount();
-        String accessToken = account.getIdToken();
-        this.activity = activity;
-//        mailboxDataList = null;
+    protected boolean isLastItemVisible(LinearLayoutManager layoutManager) {
+        int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+        int totalItemCount = layoutManager.getItemCount();
+        return lastVisibleItemPosition == totalItemCount - 1;
     }
-    public void getGmailInboxMessages() {
+    protected void getGmailMessages(int index, String query, String disFrom, Context context) {
+        mainQuery = query;
+        displayFrom = disFrom;
 
         GoogleSignInAccount account = LoginActivity.getAccount();
         if (account != null) {
             GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(
-                    activity, Arrays.asList(SCOPES));
+                    this, Arrays.asList(SCOPES));
             credential.setSelectedAccount(account.getAccount());
 
             mGmailService = new Gmail.Builder(
@@ -68,52 +63,99 @@ public class EmailAPI extends BaseActivity {
                     credential)
                     .setApplicationName("Email Launcher")
                     .build();
-            new Thread(new Runnable() {
+            mainThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        String query = "in:inbox";
-                        ListMessagesResponse response = mGmailService.users().messages().list("me").execute();
-                        List<Message> messages = response.getMessages();
-                        mailboxDataList = new ArrayList<>();
+                        ListMessagesResponse response = mGmailService.users().messages().list("me").setQ(query).execute();
+                        List<Message> messages = null;
+                        int fromIndex = index * 10;
+                        int toIndex = (index + 1) * 10;
+                        if (index == 0) emailList = new ArrayList<>();
+                        if(endFlag)    return;
+                        if(response.getMessages() != null) {
+                            messageNum = response.getMessages().size();
+//                            if(index != 0) {
+//                                toIndex = messageNum;
+//                                endFlag = true;
+//                            }
+                            try {
+                                messages = response.getMessages().subList(fromIndex, toIndex);//toIndex
+//                                endFlag = true;
+                            } catch (Exception e) {
+                                messages = response.getMessages().subList(fromIndex, messageNum);
+                                endFlag = true;
+                            }
+                        }
+                        List<MailboxData> mailboxDataList = new ArrayList<>();
 
                         // Process the fetched messages and extract sender, subject, and content
-                        for (Message message : messages) {
-                            String messageId = message.getId();
-                            Message fetchedMessage = mGmailService.users().messages().get("me", messageId).execute();
-                            // Retrieve message details such as sender, subject, and content
-                            String from = "";
-                            String subject = "";
-                            String image = "";
-                            String time = "";
-                            String content = fetchedMessage.getSnippet();
-                            List<MessagePartHeader> headers = fetchedMessage.getPayload().getHeaders();
-                            if (headers != null) {
-                                for (MessagePartHeader header : headers) {
-                                    if (header.getName().equals("From")) {
-                                        from = header.getValue();
-                                        from = from.substring(from.indexOf('<') + 1, from.indexOf('>'));
-                                        image = "https://www.gravatar.com/avatar/" + MD5Util.md5Hex(from.toLowerCase().trim()) + "?d=identicon";
-                                    } else if (header.getName().equals("Subject")) {
-                                        subject = header.getValue();
+                        if (messages != null) {
+                            for (Message message : messages) {
+                                String messageId = message.getId();
+                                Message fetchedMessage = mGmailService.users().messages().get("me", messageId).execute();
+                                // Retrieve message details such as sender, subject, and content
+                                String content = fetchedMessage.getSnippet();
+                                String mailBody = fetchedMessage.getSnippet();
+
+                                List<MessagePartHeader> headers = fetchedMessage.getPayload().getHeaders();
+                                String compare = "From";
+                                if(disFrom == "To") compare = "From";
+                                else compare = "To";
+                                if (headers != null) {
+                                    for (MessagePartHeader header : headers) {
+                                        if (header.getName().equals(disFrom)) {
+                                            from = header.getValue();
+                                            image = "https://www.gravatar.com/avatar/" + MD5Util.md5Hex(from.toLowerCase().trim()) + "?d=identicon";
+                                        } else if (header.getName().equals(compare)) {
+                                            to = header.getValue();
+
+                                        } else if (header.getName().equals("Subject")) {
+                                            subject = header.getValue();
+                                        }
                                     }
                                 }
+
+                                long timestamp = fetchedMessage.getInternalDate();
+                                time = timestamp;
+
+
+//                                MessagePart payload = fetchedMessage.getPayload();
+//                                String mailBody = "";
+//                                if (payload != null && payload.getParts() != null) {
+//                                    for (MessagePart part : payload.getParts()) {
+//                                        // Find the part containing the email body (usually with mimeType "text/plain" or "text/html")
+//                                        if (part.getMimeType().equals("text/plain") || part.getMimeType().equals("text/html")) {
+//                                            // Decode and obtain the email body content
+//                                            byte[] bytes = android.util.Base64.decode(part.getBody().getData(), android.util.Base64.DEFAULT);
+//                                            mailBody = new String(bytes, StandardCharsets.UTF_8);
+//                                            // You may need to handle HTML content differently, e.g., displaying it in a WebView
+//                                            break;
+//                                        }
+//                                    }
+//                                }
+
+                                // Now, you can use 'from', 'subject', and 'snippet' to display the message details in the app's UI.
+                                MailboxData inboxData = new MailboxData(messageId,from, to,  subject, content, image, time, mailBody);
+                                mailboxDataList.add(inboxData);
                             }
-
-                            long timestamp = fetchedMessage.getInternalDate();
-                            time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date(timestamp));
-
-                            // Now, you can use 'from', 'subject', and 'snippet' to display the message details in the app's UI.
-                            Log.d("GmailInboxActivity", "From: " + from + ", Subject: " + subject + ", content: " + content+  ", image: " + image + ", time: " + time);
-                            MailboxData inboxData = new MailboxData(from, subject, content, image, time);
-                            mailboxDataList.add(inboxData);
                         }
-                        emailList = new ArrayList<>();
-                        if(mailboxDataList != null) {
+                        if (mailboxDataList != null) {
                             for (MailboxData mailData : mailboxDataList) {
-                                emailList.add(new Email(mailData.getFrom(), mailData.getSubject(), mailData.getContent(), mailData.getImage(), mailData.getTime()));
+                                emailList.add(new Email(mailData.getId(),mailData.getFrom(), mailData.getTo(), mailData.getSubject(), mailData.getContent(), mailData.getImage(), mailData.getTime(), mailData.getBody()));
                             }
                         }
+
+                        runOnUiThread(() -> {
+                            if(index != 0) {
+                                mainThread.interrupt();
+                            } else {
+                                emailRecyclerView.setVisibility(View.VISIBLE);
+                                loadingScreen.setVisibility(View.GONE);
+                            }
+                            setupEmailList(emailList, messageNum, context);
+                        });
+
                     } catch (UserRecoverableAuthIOException e) {
                         startActivityForResult(e.getIntent(), REQUEST_AUTHORIZATION);
                         Log.d("FetchMessageError", e.toString());
@@ -123,15 +165,18 @@ public class EmailAPI extends BaseActivity {
                     }
 
                 }
-            }).start();
+            });
+            mainThread.start();
         }
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_AUTHORIZATION && resultCode == RESULT_OK) {
-            getGmailInboxMessages();
+            getGmailMessages(index, mainQuery, displayFrom, context);
         }
     }
 

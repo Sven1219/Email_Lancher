@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sven.email.CustomActivity">
+        <EditText
+            android:id="@+id/messageBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="21dp"
+            android:textColor="@color/black"
+            android:height="51dp"
+            android:alpha="0.3"
+            android:background="@drawable/bg_rounded_searchapp"
+            android:backgroundTint="@color/grey"
+            android:drawableLeft="@drawable/searchicon"
+            android:drawableTint="#FF0000"
+            android:hint="Search for apps content"
+            android:padding="10dp"
+            android:textColorHint="@color/white" />
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/messageBox2"
+            android:scrollbars="none">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="11dp"
+                            android:layout_marginTop="0dp"
+                            android:paddingTop="0dp"
+                            android:text="Recent"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/appDrawer_recylerView_recent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/gap_20sp"
+                            android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp">
+
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="11sp"
+                            android:layout_marginTop="@dimen/gap_20sp"
+                            android:text="All Apps"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/appDrawer_recylerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="11sp"
+                            android:overScrollMode="never"
+                            android:paddingTop="@dimen/gap_20sp"
+                            android:paddingBottom="@dimen/gap_30sp"
+                            >
+
+
+                        </androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
+        </ScrollView>
+
+</RelativeLayout>
